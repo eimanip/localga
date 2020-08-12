@@ -43,8 +43,8 @@ const saveAnalyticsFile = folder => {
  * @return {Void}
  */
 const localga = options => {
-	const { id, folder, name } = options;
-	const file = path.join(folder, name);
+	const { id, filename, outputdir } = options;
+	const filePath = path.join(outputdir, filename);
 
 	if (!id) {
 		throw new Error('No google analytics ID supplied.');
@@ -52,11 +52,11 @@ const localga = options => {
 
 	return request(`${GA_SCRIPT_URL}?id=${id}`)
 		.then(async data => {
-			data = data.replace(ANALYTICS_SCRIPT_URL, path.join(folder, ANALYTICS_FILE_NAME));
+			data = data.replace(ANALYTICS_SCRIPT_URL, path.join(path.dirname(filename), ANALYTICS_FILE_NAME));
 
-			saveFile(file, data);
+			saveFile(filePath, data);
 
-			await saveAnalyticsFile(folder);
+			await saveAnalyticsFile(path.dirname(filePath));
 		})
 		.catch(console.error);
 };

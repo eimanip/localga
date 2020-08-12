@@ -43,19 +43,19 @@ yarn add localga --dev
 
 ```javascript
 "scripts": {
-	"ga": "localga --id UA-XXXXXXXX-Y --folder ./your/js/folder --name google-analytics-local.js"
+	"ga": "localga --id UA-XXXXXXXX-Y --filename ga/google-analytics-local.js --outputdir dist/"
 }
 ```
 
 2. From command line (Install the module globally first):
 
 ```sh
-localga --id UA-XXXXXXXX-Y --folder ./your/js/folder --name google-analytics-local.js
+localga --id UA-XXXXXXXX-Y --filename ga/google-analytics-local.js --outputdir dist/
 ```
 
 The `localga` module will generate two new script files called `google-analytics-local.js` and `analytics.js` placed in the folder you provided.
 
-If no `--folder` is specified, the files will be placed in the root of your project.
+If no `--outputdir` is specified, the files will be placed in the root of your project.
 
 After the files are generated, you should `require` the `google-analytics-local.js` file in your bundle (or include it in your HTML file(s)).
 

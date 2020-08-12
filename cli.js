@@ -16,25 +16,25 @@ const localga = require('./');
 const cli = meow(
 	`
 Options
-  --id      Your Google Analytics ID
-  --folder  Where to write the file
-  --name	Name of the gtag.js script file
+  --id			Your Google Analytics ID
+  --filename	File name of the gtag.js script file
+  --outputdir	Output directory of where the files are created
 
 Usage Examples
-  $ localga --id UA-XXXXXXX-Y --folder ./src/js/ --name google-analytics-local.js
+  $ localga --id UA-XXXXXXX-Y --file-name ./src/js/google-analytics-local.js --output-dir ./dist
 `,
 	{
 		flags: {
 			id: {
 				type: 'string'
 			},
-			folder: {
-				type: 'string',
-				default: './'
-			},
-			name: {
+			filename: {
 				type: 'string',
 				default: 'google-analytics-local.js'
+			},
+			outputdir: {
+				type: 'string',
+				default: './'
 			},
 		}
 	}
